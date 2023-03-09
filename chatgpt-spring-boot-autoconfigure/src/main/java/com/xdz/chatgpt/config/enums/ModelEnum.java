@@ -15,6 +15,10 @@ public enum ModelEnum {
     /**
      * 计算机编程和科研领域表现突出
      */
+    gpt_turbo("gpt-3.5-turbo", "https://api.openai.com/v1/chat/completions"),
+    /**
+     * 计算机编程和科研领域表现突出
+     */
     davinciCodex("davinci-codex", "https://api.openai.com/v1/engines/davinci-codex/completions"),
     /**
      * 强大的文本处理能力

@@ -19,7 +19,7 @@ public interface ChatGptService {
         try {
             URL url = new URL(apiUrl);
             con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
+            con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setDoOutput(true);
