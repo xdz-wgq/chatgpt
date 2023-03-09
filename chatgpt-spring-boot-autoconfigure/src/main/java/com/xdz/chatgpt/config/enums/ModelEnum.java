@@ -13,7 +13,7 @@ package com.xdz.chatgpt.config.enums;
  */
 public enum ModelEnum {
     /**
-     * 计算机变成和科研领域表现突出
+     * 计算机编程和科研领域表现突出
      */
     davinciCodex("davinci-codex", "https://api.openai.com/v1/engines/davinci-codex/completions"),
     /**
