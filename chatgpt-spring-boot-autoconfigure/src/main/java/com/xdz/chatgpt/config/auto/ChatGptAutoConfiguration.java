@@ -14,13 +14,13 @@ import javax.annotation.Resource;
 
 @EnableConfigurationProperties(ChatGptProperties.class)
 @ConditionalOnClass(ChatGptService.class)
-@ConditionalOnMissingBean(ChatGptService.class)
 public class ChatGptAutoConfiguration {
 
     @Resource
     private ChatGptProperties chatGptProperties;
 
     @Bean
+    @ConditionalOnMissingBean(ChatGptService.class)
     public ChatGptService chatGptService() {
         if(chatGptProperties.getModel() == null){
             throw new ChatGptException("chatgpt.model is not empty.");
