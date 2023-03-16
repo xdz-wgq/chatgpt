@@ -19,7 +19,7 @@ public class InitChatGptService implements ChatGptService {
         if (maxTokens == null) {
             maxTokens = chatGptProperties.getModel().getMaxToken();
         }
-        ChatGptVo chatGptVo = sendRequest(chatGptProperties.getApiKey(), new ChatGptDto(chatGptProperties.getModel().getModelName(), maxTokens, chatGptProperties.getTemperature(), new ChatGptDto.Content("user", message)));
+        ChatGptVo chatGptVo = sendRequest(chatGptProperties.getApiKey(), chatGptProperties.getProxy(), new ChatGptDto(chatGptProperties.getModel().getModelName(), maxTokens, chatGptProperties.getTemperature(), new ChatGptDto.Content("user", message)));
         return parse(chatGptVo);
     }
 

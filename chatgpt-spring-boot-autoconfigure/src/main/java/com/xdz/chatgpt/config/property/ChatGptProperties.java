@@ -17,6 +17,8 @@ public class ChatGptProperties {
 
     private Double temperature = 0.5;
 
+    private String proxy;
+
     public String getApiKey() {
         return apiKey;
     }
@@ -47,5 +49,13 @@ public class ChatGptProperties {
 
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
+    }
+
+    public String getProxy() {
+        return proxy;
+    }
+
+    public void setProxy(String proxy) {
+        this.proxy = proxy;
     }
 }

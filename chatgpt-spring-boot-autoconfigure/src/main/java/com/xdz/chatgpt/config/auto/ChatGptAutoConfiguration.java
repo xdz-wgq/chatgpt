@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -28,6 +27,9 @@ public class ChatGptAutoConfiguration {
         }
         if (!StringUtils.hasText(chatGptProperties.getApiKey())) {
             throw new ChatGptException("chatgpt.apiKey is not empty.");
+        }
+        if (!StringUtils.hasText(chatGptProperties.getProxy())) {
+            throw new ChatGptException("chatgpt.proxy is not empty.");
         }
         return new InitChatGptService(chatGptProperties);
     }

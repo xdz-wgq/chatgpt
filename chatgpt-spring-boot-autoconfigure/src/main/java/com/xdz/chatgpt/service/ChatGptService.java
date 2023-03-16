@@ -14,11 +14,15 @@ import java.net.URL;
 public interface ChatGptService {
     String sendMessage(String message);
 
-    default ChatGptVo sendRequest(String apiKey, ChatGptDto chatGptDto) {
+    default ChatGptVo sendRequest(String apiKey, String proxy, ChatGptDto chatGptDto) {
         HttpURLConnection con = null;
         try {
             URL url = new URL("https://api.openai.com/v1/chat/completions");
             con = (HttpURLConnection) url.openConnection();
+            // 设置代理
+            String[] proxyArray = proxy.split(":");
+            System.setProperty("http.proxyHost", proxyArray[0]);
+            System.setProperty("http.proxyPort", proxyArray[1]);
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
