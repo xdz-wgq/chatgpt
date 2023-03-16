@@ -13,11 +13,9 @@ public class ChatGptProperties {
 
     private ModelEnum model;
 
-    private Integer maxTokens = 500;
+    private Integer maxTokens;
 
     private Double temperature = 0.5;
-
-    private String stop = ".";
 
     public String getApiKey() {
         return apiKey;
@@ -49,13 +47,5 @@ public class ChatGptProperties {
 
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
-    }
-
-    public String getStop() {
-        return stop;
-    }
-
-    public void setStop(String stop) {
-        this.stop = stop;
     }
 }

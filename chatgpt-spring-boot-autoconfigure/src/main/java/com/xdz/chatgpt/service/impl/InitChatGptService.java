@@ -15,7 +15,11 @@ public class InitChatGptService implements ChatGptService {
 
     @Override
     public String sendMessage(String message) {
-        ChatGptVo chatGptVo = sendRequest(chatGptProperties.getModel().getModelApi(), chatGptProperties.getApiKey(), new ChatGptDto(message, chatGptProperties.getMaxTokens(), chatGptProperties.getTemperature(), chatGptProperties.getStop()));
-        return chatGptVo.getChoices().stream().map(ChatGptVo.Choice::getText).reduce("", (x, y) -> x + "\n" + y);
+        Integer maxTokens = chatGptProperties.getMaxTokens();
+        if (maxTokens == null) {
+            maxTokens = chatGptProperties.getModel().getMaxToken();
+        }
+        ChatGptVo chatGptVo = sendRequest(chatGptProperties.getApiKey(), new ChatGptDto(chatGptProperties.getModel().getModelName(), maxTokens, chatGptProperties.getTemperature(), new ChatGptDto.Content("user", message)));
+        return chatGptVo.getChoices().stream().map(choice -> choice.getMessage().getContent()).reduce("", (x, y) -> x + "\n" + y);
     }
 }

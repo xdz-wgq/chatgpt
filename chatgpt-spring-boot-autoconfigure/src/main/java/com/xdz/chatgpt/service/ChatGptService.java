@@ -14,10 +14,10 @@ import java.net.URL;
 public interface ChatGptService {
     String sendMessage(String message);
 
-    default ChatGptVo sendRequest(String apiUrl, String apiKey, ChatGptDto chatGptDto) {
+    default ChatGptVo sendRequest(String apiKey, ChatGptDto chatGptDto) {
         HttpURLConnection con = null;
         try {
-            URL url = new URL(apiUrl);
+            URL url = new URL("https://api.openai.com/v1/chat/completions");
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");
@@ -36,6 +36,7 @@ public interface ChatGptService {
             while ((output = br.readLine()) != null) {
                 response.append(output);
             }
+            System.out.println(response);
             return JSON.parseObject(response.toString(), ChatGptVo.class);
         } catch (Exception e) {
             throw new ChatGptException(e.getMessage());

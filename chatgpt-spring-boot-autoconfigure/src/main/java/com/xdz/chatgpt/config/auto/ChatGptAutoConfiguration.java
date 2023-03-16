@@ -7,6 +7,7 @@ import com.xdz.chatgpt.service.impl.InitChatGptService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -20,10 +21,10 @@ public class ChatGptAutoConfiguration {
 
     @Bean
     public ChatGptService chatGptService() {
-        if(chatGptProperties.getModel() == null){
+        if (chatGptProperties.getModel() == null) {
             throw new ChatGptException("chatgpt.model is not empty.");
         }
-        if(!StringUtils.hasText(chatGptProperties.getApiKey())){
+        if (!StringUtils.hasText(chatGptProperties.getApiKey())) {
             throw new ChatGptException("chatgpt.apiKey is not empty.");
         }
         return new InitChatGptService(chatGptProperties);

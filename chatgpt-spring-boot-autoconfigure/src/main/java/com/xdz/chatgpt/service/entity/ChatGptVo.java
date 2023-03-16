@@ -6,25 +6,30 @@ public class ChatGptVo {
     private String id;
     private String object;
     private Long created;
+
+    /**
+     * 模型
+     */
     private String model;
 
+    /**
+     * 生成的完整列表
+     */
     private List<Choice> choices;
 
     @SuppressWarnings("all")
     public static class Choice {
-        private String text;
+        private ChatGptDto.Content message;
         private Integer index;
-
-        private String logprobs;
 
         private String finish_reason;
 
-        public String getText() {
-            return text;
+        public ChatGptDto.Content getMessage() {
+            return message;
         }
 
-        public void setText(String text) {
-            this.text = text;
+        public void setMessage(ChatGptDto.Content message) {
+            this.message = message;
         }
 
         public Integer getIndex() {
@@ -33,14 +38,6 @@ public class ChatGptVo {
 
         public void setIndex(Integer index) {
             this.index = index;
-        }
-
-        public String getLogprobs() {
-            return logprobs;
-        }
-
-        public void setLogprobs(String logprobs) {
-            this.logprobs = logprobs;
         }
 
         public String getFinish_reason() {

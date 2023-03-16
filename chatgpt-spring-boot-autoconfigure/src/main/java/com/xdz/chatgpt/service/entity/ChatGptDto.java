@@ -1,13 +1,20 @@
 package com.xdz.chatgpt.service.entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 @SuppressWarnings("all")
 public class ChatGptDto {
 
     /**
-     * 生成文本的开头或前缀
+     * 模型
      */
-    private String prompt;
+    private String model;
 
+    /**
+     * 消息
+     */
+    private List<Content> messages;
     /**
      * 用于指定生成的文本的最大长度
      */
@@ -18,24 +25,62 @@ public class ChatGptDto {
      */
     private Double temperature;
 
-    /**
-     * 用于控制生成文本的终止符
-     */
-    private String stop;
-
-    public ChatGptDto(String prompt, Integer maxTokens, Double temperature, String stop) {
-        this.prompt = prompt;
+    public ChatGptDto(String model, Integer maxTokens, Double temperature, Content... contentList) {
+        this.model = model;
+        this.messages = Arrays.asList(contentList);
         this.max_tokens = maxTokens;
         this.temperature = temperature;
-        this.stop = stop;
     }
 
-    public String getPrompt() {
-        return prompt;
+    /**
+     * 内容数据
+     */
+    public static class Content {
+        /**
+         * 角色
+         */
+        private String role;
+        /**
+         * 内容
+         */
+        private String content;
+
+        public Content(String role, String content) {
+            this.role = role;
+            this.content = content;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
     }
 
-    public void setPrompt(String prompt) {
-        this.prompt = prompt;
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public List<Content> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Content> messages) {
+        this.messages = messages;
     }
 
     public Integer getMax_tokens() {
@@ -52,13 +97,5 @@ public class ChatGptDto {
 
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
-    }
-
-    public String getStop() {
-        return stop;
-    }
-
-    public void setStop(String stop) {
-        this.stop = stop;
     }
 }
