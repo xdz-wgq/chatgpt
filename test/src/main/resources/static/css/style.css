@@ -1,0 +1,135 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #000;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+#chat-container {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    background-color: #333;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+
+.message {
+    display: inline-block;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.left {
+    float: left;
+    clear: both;
+    background-color: #555;
+    color: #fff;
+    margin-left: 10px;
+}
+
+.right {
+    float: right;
+    clear: both;
+    background-color: #007acc;
+    color: #fff;
+    margin-right: 10px;
+}
+
+#input-box {
+    position: absolute;
+    bottom: 10px;
+    left: 26px;
+    width: 96%;
+    background-color: #111;
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+}
+
+#message-box {
+    overflow-y: scroll;
+    clear: both;
+    height: calc(100% - 120px);
+    padding: 20px;
+}
+
+#message-input {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #222;
+}
+
+#send-button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #007acc;
+    cursor: pointer;
+}
+
+/* 将代码块的背景色设置为黑色 */
+pre code {
+    background: #222;
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+/* 设置代码块内的文本颜色为白色 */
+pre code span {
+    color: #f8f8f8;
+}
+
+.copy-button {
+    float: right;
+}
+
+.code-block-container {
+    position: relative;
+}
+
+.code-block-container code {
+    padding: 16px;
+    font-size: 14px;
+}
+
+.copy-button {
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #fff;
+    background-color: #343540;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+p {
+    line-height: 1.5;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+}

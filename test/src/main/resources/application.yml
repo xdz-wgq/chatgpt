@@ -1,0 +1,9 @@
+server:
+  port: 10001 #Tomcat端口
+
+chatgpt:
+  api-key: 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
+  model: gpt_3_5_turbo
+  max-tokens: 1000
+  temperature: 0.7
+  proxy: 127.0.0.1:15732

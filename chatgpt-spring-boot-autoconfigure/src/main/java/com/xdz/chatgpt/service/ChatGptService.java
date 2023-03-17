@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URL;
 
 public interface ChatGptService {
@@ -18,11 +20,9 @@ public interface ChatGptService {
         HttpURLConnection con = null;
         try {
             URL url = new URL("https://api.openai.com/v1/chat/completions");
-            con = (HttpURLConnection) url.openConnection();
             // 设置代理
             String[] proxyArray = proxy.split(":");
-            System.setProperty("http.proxyHost", proxyArray[0]);
-            System.setProperty("http.proxyPort", proxyArray[1]);
+            con = (HttpURLConnection) url.openConnection(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyArray[0], Integer.parseInt(proxyArray[1]))));
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
